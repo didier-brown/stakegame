@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>StakeRun</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">StakeRun MVP</p>
+      <h1>Commit. Move. Earn.</h1>
+    </div>
+    <div class="wallet">
+      <span class="wallet-label">Wallet</span>
+      <span id="walletBalance" class="wallet-balance">$0.00</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Dashboard</h2>
+      <div class="grid">
+        <div>
+          <p class="label">Active Challenges</p>
+          <p id="activeCount" class="metric">0</p>
+        </div>
+        <div>
+          <p class="label">Completed Challenges</p>
+          <p id="completedCount" class="metric">0</p>
+        </div>
+      </div>
+      <div id="challengeList" class="challenge-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>Create a Challenge</h2>
+      <form id="challengeForm" class="form">
+        <label>
+          Challenge name
+          <input type="text" id="challengeName" placeholder="Morning miles" required />
+        </label>
+        <div class="field-row">
+          <label>
+            Start date
+            <input type="date" id="challengeStart" required />
+          </label>
+          <label>
+            End date
+            <input type="date" id="challengeEnd" required />
+          </label>
+        </div>
+        <div class="field-row">
+          <label>
+            Entry fee (pennies)
+            <input type="number" id="challengeFee" min="1" step="1" required />
+          </label>
+          <label>
+            Steps/day avg
+            <input type="number" id="challengeThreshold" min="1" step="1" required />
+          </label>
+        </div>
+        <button type="submit" class="btn primary">Create challenge</button>
+      </form>
+      <p class="hint">Challenges are local only. Joining deducts your stake from the wallet.</p>
+    </section>
+
+    <section class="card">
+      <h2>Mock Activity</h2>
+      <p class="hint">Generate fake steps so you can evaluate challenges quickly.</p>
+      <div class="button-row">
+        <button class="btn" data-add-steps="1000">+1,000 today</button>
+        <button class="btn" data-add-steps="3000">+3,000 today</button>
+        <button class="btn" data-add-steps="5000">+5,000 today</button>
+      </div>
+      <div class="form">
+        <div class="field-row">
+          <label>
+            Range start
+            <input type="date" id="rangeStart" />
+          </label>
+          <label>
+            Range end
+            <input type="date" id="rangeEnd" />
+          </label>
+        </div>
+        <button id="generateRange" type="button" class="btn secondary">Generate steps for range</button>
+      </div>
+      <div class="activity-summary" id="activitySummary"></div>
+    </section>
+
+    <section class="card">
+      <h2>Wallet Ledger</h2>
+      <div id="ledgerList" class="ledger"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>StakeRun is a local-only prototype. No login. No GPS. Fake money.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
